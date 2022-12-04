@@ -25,7 +25,6 @@ jobs:
         run: |
           pack build ghcr.io/kevinbos-cc/buildpacks-demo:latest \
               --builder paketobuildpacks/builder:tiny \
-              --buildpack paketo-buildpacks/spring-boot@5.21.0 \
               --buildpack paketo-buildpacks/graalvm \
               --buildpack paketo-buildpacks/java-native-image@7.41.0 \
               --path . \
