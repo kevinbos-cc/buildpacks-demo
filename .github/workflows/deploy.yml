@@ -29,7 +29,8 @@ jobs:
               --buildpack paketo-buildpacks/java-native-image@7.16.2 \
               --path . \
               --env "BP_JVM_VERSION=17" \
-              --env BP_NATIVE_IMAGE=true \
+              --env "BP_NATIVE_IMAGE=true" \
+              --env "BP_SPRING_CLOUD_BINDINGS_DISABLED=true" \
               --cache-image ghcr.io/kevinbos-cc/buildpacks-demo-paketo-cache-image:latest \
               --publish
 
