@@ -11,6 +11,14 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Set up JDK 17
+        uses: actions/setup-java@v2
+        with:
+          java-version: 17
+          distribution: 'adopt'
+      - name: Build with Gradle
+        run: ./gradlew bootBuildImage
+
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v1
         with:
@@ -25,12 +33,9 @@ jobs:
         run: |
           pack -v build ghcr.io/kevinbos-cc/buildpacks-demo:latest \
               --builder paketobuildpacks/builder:tiny \
-              --buildpack paketo-buildpacks/graalvm \
-              --buildpack paketo-buildpacks/java-native-image@7.41.0 \
-              --path . \
+              --path target/buildpacks-demo-0.0.1-SNAPSHOT.jar \
               --env "BP_JVM_VERSION=17" \
               --env "BP_NATIVE_IMAGE=true" \
-              --env "BP_SPRING_CLOUD_BINDINGS_DISABLED=true" \
               --cache-image ghcr.io/kevinbos-cc/buildpacks-demo-paketo-cache-image:latest \
               --publish
 
