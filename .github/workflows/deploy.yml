@@ -25,7 +25,7 @@ jobs:
         run: |
           pack build ghcr.io/kevinbos-cc/buildpacks-demo:latest \
               --builder paketobuildpacks/builder:tiny \
-              --buildpack paketo-buildpacks/java-native-image@7.41.0 \
+              --buildpack paketo-buildpacks/java-native-image@7.27.1 \
               --env "BP_JVM_VERSION=17" \
               --env "BP_NATIVE_IMAGE=true" \
               --cache-image ghcr.io/kevinbos-cc/buildpacks-demo-paketo-cache-image:latest \
