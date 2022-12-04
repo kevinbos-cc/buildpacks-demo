@@ -25,6 +25,7 @@ jobs:
         run: |
           pack build ghcr.io/kevinbos-cc/buildpacks-demo:latest \
               --builder paketobuildpacks/builder:tiny \
+              --buildpack paketo-buildpacks/executable-jar@6.5.0 \
               --buildpack paketo-buildpacks/bellsoft-liberica@9.10.1 \
               --buildpack paketo-buildpacks/java-native-image@7.16.2 \
               --path . \
