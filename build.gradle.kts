@@ -39,7 +39,7 @@ tasks.named<org.springframework.boot.gradle.tasks.bundling.BootBuildImage>("boot
 	imageName.set("ghcr.io/kevinbos-cc/buildpacks-demo")
 	publish.set(true)
 	docker {
-		builderRegistry {
+		publishRegistry {
 			host.set("ghcr.io")
 		}
 	}
