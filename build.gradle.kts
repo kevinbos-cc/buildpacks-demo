@@ -35,6 +35,10 @@ tasks.withType<Test> {
 	useJUnitPlatform()
 }
 
+tasks.getByName<Jar>("jar") {
+	enabled = false
+}
+
 tasks.named<org.springframework.boot.gradle.tasks.bundling.BootBuildImage>("bootBuildImage") {
 	imageName.set("ghcr.io/kevinbos-cc/buildpacks-demo")
 	publish.set(true)
