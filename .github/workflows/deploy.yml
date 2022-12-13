@@ -24,13 +24,11 @@ jobs:
       - name: Build app with pack CLI & publish to GitHub Container Registry
         run: |
           pack -v build ghcr.io/kevinbos-cc/buildpacks-demo:latest \
-              --builder paketobuildpacks/builder:tiny \
-              --buildpack paketo-buildpacks/graalvm \
-              --buildpack paketo-buildpacks/java-native-image@7.41.0 \
+              --builder paketobuildpacks/builder:tiny \              
               --path . \
               --env "BP_JVM_VERSION=17" \
-              --env "BP_NATIVE_IMAGE=true" \
               --env "BP_SPRING_CLOUD_BINDINGS_DISABLED=true" \
+              --env "BP_OCI_SOURCE=https://github.com/kevinbos-cc/buildpacks-demo" \
               --cache-image ghcr.io/kevinbos-cc/buildpacks-demo-paketo-cache-image:latest \
               --publish
 

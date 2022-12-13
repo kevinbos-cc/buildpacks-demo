@@ -40,11 +40,5 @@ tasks.getByName<Jar>("jar") {
 }
 
 tasks.named<org.springframework.boot.gradle.tasks.bundling.BootBuildImage>("bootBuildImage") {
-	imageName.set("ghcr.io/kevinbos-cc/buildpacks-demo")
-	publish.set(true)
-	docker {
-		publishRegistry {
-			host.set("ghcr.io")
-		}
-	}
+	builder.set("dashaun/java-native-builder-multiarch:7.41.0")
 }
